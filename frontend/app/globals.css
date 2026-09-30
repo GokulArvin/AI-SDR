@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f3ee;
+  --foreground: #201f1c;
+  --card: #fffefb;
+  --card-foreground: #201f1c;
+  --border: #e3e0d7;
+  --muted: #eeece4;
+  --muted-foreground: #6b6a62;
+  --primary: #0e6f6a;
+  --primary-hover: #0b5852;
+  --primary-foreground: #f5fffd;
+  --ring: #0e6f6a;
+
+  --success: #3f7d4a;
+  --success-bg: #e7f1e6;
+  --warning: #b8791e;
+  --warning-bg: #f7ecd9;
+  --danger: #b23a2e;
+  --danger-bg: #f6e4e1;
+  --info: #55738c;
+  --info-bg: #e7edf1;
+
+  /* Sidebar deliberately stays dark in both themes -- a fixed wayfinding anchor
+     rather than something that blends into the working canvas. */
+  --sidebar-bg: #17201d;
+  --sidebar-border: rgba(255, 255, 255, 0.07);
+  --sidebar-text: #cfd6d0;
+  --sidebar-text-dim: #8b9690;
+  --sidebar-active-bg: rgba(79, 189, 179, 0.16);
+  --sidebar-active-text: #6fd0c7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-info: var(--info);
+  --color-info-bg: var(--info-bg);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-dim: var(--sidebar-text-dim);
+  --color-sidebar-active-bg: var(--sidebar-active-bg);
+  --color-sidebar-active-text: var(--sidebar-active-text);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #15130f;
+    --foreground: #f1ede3;
+    --card: #1d1b16;
+    --card-foreground: #f1ede3;
+    --border: #332f26;
+    --muted: #262319;
+    --muted-foreground: #a39b88;
+    --primary: #4fbdb3;
+    --primary-hover: #6fd0c7;
+    --primary-foreground: #08211d;
+    --ring: #4fbdb3;
+
+    --success: #7fc98a;
+    --success-bg: rgba(127, 201, 138, 0.14);
+    --warning: #e0ab5b;
+    --warning-bg: rgba(224, 171, 91, 0.14);
+    --danger: #e08277;
+    --danger-bg: rgba(224, 130, 119, 0.14);
+    --info: #93b0c4;
+    --info-bg: rgba(147, 176, 196, 0.14);
+  }
+}
+
+/* Manual override via the theme toggle takes precedence over the OS preference. */
+:root[data-theme="light"] {
+  --background: #f5f3ee;
+  --foreground: #201f1c;
+  --card: #fffefb;
+  --card-foreground: #201f1c;
+  --border: #e3e0d7;
+  --muted: #eeece4;
+  --muted-foreground: #6b6a62;
+  --primary: #0e6f6a;
+  --primary-hover: #0b5852;
+  --primary-foreground: #f5fffd;
+  --ring: #0e6f6a;
+  --success: #3f7d4a;
+  --success-bg: #e7f1e6;
+  --warning: #b8791e;
+  --warning-bg: #f7ecd9;
+  --danger: #b23a2e;
+  --danger-bg: #f6e4e1;
+  --info: #55738c;
+  --info-bg: #e7edf1;
+}
+
+:root[data-theme="dark"] {
+  --background: #15130f;
+  --foreground: #f1ede3;
+  --card: #1d1b16;
+  --card-foreground: #f1ede3;
+  --border: #332f26;
+  --muted: #262319;
+  --muted-foreground: #a39b88;
+  --primary: #4fbdb3;
+  --primary-hover: #6fd0c7;
+  --primary-foreground: #08211d;
+  --ring: #4fbdb3;
+  --success: #7fc98a;
+  --success-bg: rgba(127, 201, 138, 0.14);
+  --warning: #e0ab5b;
+  --warning-bg: rgba(224, 171, 91, 0.14);
+  --danger: #e08277;
+  --danger-bg: rgba(224, 130, 119, 0.14);
+  --info: #93b0c4;
+  --info-bg: rgba(147, 176, 196, 0.14);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 15% -10%, color-mix(in srgb, var(--primary) 6%, transparent), transparent),
+    var(--background);
+  color: var(--foreground);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition {
+  animation: fade-in 0.25s ease-out;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
